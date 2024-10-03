@@ -4,5 +4,5 @@ from pydantic import BaseModel
 
 
 class Position(BaseModel, Enum):
-    id: int
+    # id: int
     name: str

@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel
 
 from .contact_info import ContactInfo
@@ -6,22 +7,21 @@ from .soft_skills import SoftSkills
 
 
 class Employee(BaseModel):
-    id: int
     name: str
-    # contact_info: ContactInfo
-    # department_id: str
+    contact_info: ContactInfo
+    department_id: str
     position_id: int
     salary: float
-    # soft_skills: list[SoftSkills]
-    # hard_skills: list[HardSkills]
+    soft_skills: Optional[list[SoftSkills]]
+    hard_skills: Optional[list[HardSkills]]
     
     
 class EmployeeUpdate(BaseModel):
-    id: int
+    # id: int
     name: str
     # contact_info: ContactInfo
-    # department_id: str
+    department_id: str
     position_id: int
     salary: float
-    # soft_skills: list[SoftSkills]
-    # hard_skills: list[HardSkills]
+    soft_skills: list[SoftSkills]
+    hard_skills: list[HardSkills]

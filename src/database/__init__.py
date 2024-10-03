@@ -1,2 +1,4 @@
-from database.database import *
-from database.models import *
+from .database import *
+from .tables import *
+from .datasource import *
+from .data import *

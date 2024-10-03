@@ -4,6 +4,6 @@ from pydantic import BaseModel
 
 
 class Department(BaseModel, Enum):
-    id: str
+    # id: str
     name: str
     location: str
