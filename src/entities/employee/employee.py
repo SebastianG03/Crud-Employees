@@ -8,20 +8,32 @@ from .soft_skills import SoftSkills
 
 class Employee(BaseModel):
     name: str
+    password: str
     contact_info: ContactInfo
-    department_id: str
+    department_id: int
     position_id: int
     salary: float
-    soft_skills: Optional[list[SoftSkills]]
-    hard_skills: Optional[list[HardSkills]]
+    soft_skills: Optional[list[SoftSkills]] = []
+    hard_skills: Optional[list[HardSkills]] = []  
+    
+    class Config:
+        orm_mode = True
+        from_attributes=True
+
+        
     
     
 class EmployeeUpdate(BaseModel):
-    # id: int
+    id: int
     name: str
-    # contact_info: ContactInfo
-    department_id: str
+    password: str
+    contact_info: ContactInfo
+    department_id: int
     position_id: int
     salary: float
-    soft_skills: list[SoftSkills]
-    hard_skills: list[HardSkills]
+    soft_skills: list[SoftSkills] = []
+    hard_skills: list[HardSkills] = []
+    
+    class Config:
+        orm_mode = True
+        from_attributes=True

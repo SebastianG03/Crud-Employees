@@ -7,16 +7,17 @@ class EmployeeModel(Base):
 
     # Columnas básicas
     id = Column(Integer, primary_key=True, autoincrement=True)
+    password = Column(String(265), nullable=False)
     name = Column(String(60), nullable=False)
-    department_id = Column(String, ForeignKey('departments.id'), nullable=False)  # Asume que hay una tabla 'departments'
+    department_id = Column(Integer, ForeignKey('departments.id'), nullable=False)  # Asume que hay una tabla 'departments'
     position_id = Column(Integer, nullable=False)
     salary = Column(Float, nullable=False)
     soft_skills = relationship("SoftSkillsModel", secondary="employee_soft_skills")
     hard_skills = relationship("HardSkillsModel", secondary="employee_hard_skills")
     
     contact_info = relationship("ContactInfoModel", uselist=False, back_populates="employee")
+     
 
-    
 class ContactInfoModel(Base):
     __tablename__ = 'contact_info'
 

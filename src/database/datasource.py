@@ -24,11 +24,11 @@ def createEmployee(
     session: Session) -> dict[str, any]:
     employee_data = employee.model_dump()
     
-    # contact_info_data = employee_data.pop('contact_info')
+    contact_info_data = employee_data.pop('contact_info')
     soft_skills_data = employee_data.pop('soft_skills', [])
     hard_skills_data = employee_data.pop('hard_skills', [])
     employee_db = EmployeeModel(**employee_data)
-    
+    # contact_db = ContactInfoModel(**contact_info_data)
     # def map_skills(skill_data, Model):
     #     return [Model(**skill) for skill in skill_data]
     
@@ -56,15 +56,15 @@ def updateEmployee(
         hard_skills_data = employee_data.pop('hard_skills')
 
         employee_db = EmployeeModel(**employee_data)
-        soft_skills_db = EmployeeSoftSkillsModel(**soft_skills_data)
-        hard_skills_db = EmployeeHardSkillsModel(**hard_skills_data)
+        # soft_skills_db = EmployeeSoftSkillsModel(**soft_skills_data)
+        # hard_skills_db = EmployeeHardSkillsModel(**hard_skills_data)
         
         for key, value in employee_data.items():
             setattr(employee_db, key, value)
         # contact_info_db = ContactInfoModel(**contact_info_data)
         # employee_db.contact_info = contact_info_db
-        employee_db.soft_skills = soft_skills_db
-        employee_db.hard_skills = hard_skills_db
+        # employee_db.soft_skills = soft_skills_db
+        # employee_db.hard_skills = hard_skills_db
 
         employee_db = employee_data
         session.commit()

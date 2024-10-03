@@ -4,7 +4,7 @@ from pydantic import BaseModel, EmailStr
 
 
 class ContactInfo(BaseModel):
-    employee_id: str
+    employee_id: int
     email: EmailStr
     phone: Optional[str]
     address: str
