@@ -28,9 +28,13 @@ def getEmployeeById(id: int, session: Session = Depends(get_session)):
 @employee_router.get(
     "/employees",
     status_code=status.HTTP_200_OK,
+    response_model=List[EmployeeModel]
     )
-def getEmployees(session: Session = Depends(get_session)):
-    return ds.getAllEmployees(session)
+def getEmployees(session: Session = Depends(get_session)):   
+    try:
+        return ds.getAllEmployees(session)
+    except Exception as err:
+        raise Exception(err)
 
 
 @employee_router.post(
