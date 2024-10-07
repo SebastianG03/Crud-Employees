@@ -12,7 +12,7 @@ def create_app() -> FastAPI:
     application = FastAPI()
     application.add_middleware(GZipMiddleware)
     application.include_router(emp.employee_router)
-    application.include_router(auth.auth_router)
+    # application.include_router(auth.auth_router)
     return application
 
 app = create_app()

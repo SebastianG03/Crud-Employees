@@ -26,9 +26,9 @@ def getEmployeeById(id: int, session: Session = Depends(get_session)):
     return ds.getEmployee(id, session)
 
 @employee_router.get(
-    "/employees",
+    "/employees/all",
     status_code=status.HTTP_200_OK,
-    response_model=List[EmployeeModel]
+    # response_model=List[Employee]
     )
 def getEmployees(session: Session = Depends(get_session)):   
     try:
